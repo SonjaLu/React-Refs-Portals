@@ -8,7 +8,7 @@ const dialog = useRef();
     
 const [timeRemaining, setTimeRemaining] = useState(targetTime * 1000);
 
-const timerIsActive = timeRemaining > 0 && timeRemaining <= targetTime * 1000;
+const timerIsActive = timeRemaining > 0 && timeRemaining < targetTime * 1000;
 
 if (timeRemaining <= 0) {
     clearInterval(timer.current);
@@ -22,7 +22,7 @@ function handleReset() {
 
 function handleStart() {
   timer.current = setInterval(() => {
-     setTimeRemaining((prevTimeRemaining) => prevTimeRemaining - 10);  
+     setTimeRemaining(prevTimeRemaining => prevTimeRemaining - 10);  
     }, 10);
 }
 
